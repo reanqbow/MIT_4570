@@ -58,8 +58,6 @@ namespace extOSC.Examples
         }
         void Start()
         {
-            //string path = "D:/testResult/" + testerName + ".txt";
-
             Debug.Log("Start counting");
             timerIsRunning = true;
 
@@ -109,100 +107,33 @@ namespace extOSC.Examples
         private void ReceivedMessage1(OSCMessage message)
         {
             var value1 = message.Values[0].FloatValue;
-            //Debug.Log(value);
             data_gamma = value1;
         }
 
         private void ReceivedMessage2(OSCMessage message)
         {
             var value2 = message.Values[0].FloatValue;
-            //Debug.Log(value);
             data_beta = value2;
         }
         private void ReceivedMessage3(OSCMessage message)
         {
             var value3 = message.Values[0].FloatValue;
-            //Debug.Log(value);
             data_alpha = value3;
         }
 
         private void ReceivedMessage4(OSCMessage message)
         {
             var value4 = message.Values[0].FloatValue;
-            //Debug.Log(value);
             data_theta = value4;
         }
         #endregion
-
-
-        float intervalTime = 1f;
-        float timePassed = 0;
+        
         void Update()
         {
-            //if (timerIsRunning)
-            //{
-            //    if (timeRemaining > 0)
-            //    {
-            //        timePassed += Time.deltaTime;
-            //        if (timePassed > intervalTime)
-            //        {
-            //            Vector3 start = rig.centerEyeAnchor.transform.position;
-            //            Ray ray = new Ray(start, rig.centerEyeAnchor.transform.forward);
-            //            Vector3 pt = ray.GetPoint(1);
-            //            if (turnOnBeam)
-            //            {
-            //                beam.SetPosition(0, start + rig.centerEyeAnchor.transform.forward * 0.2f);
-            //                beam.SetPosition(1, pt);
-            //                beam.enabled = true;
-
-            //            }
-            //            else beam.enabled = false;
-
-            //            timePassed = 0f;
-            //        }
-            //        timeRemaining -= 1;
-            //    }
-            //    else
-            //    {
-            //        Debug.Log("Time is out.");
-            //        timerIsRunning = false;
-            //        timeRemaining = 0;
-            //    }
-            //}
-            //timePassed += Time.deltaTime;
-            //if (timePassed >= intervalTime)
-            //{
-            //    timeRemaining -= 1;
-            //    Debug.Log("Yes");
-            //    timePassed = 0;
-            //}
             if (timeRemaining <= 0)
             {
                 CancelInvoke();
             }
-
-        }
-
-        public LineRenderer CreateLine()
-        {
-            GameObject myLine = new GameObject();
-            //myLine.transform.position = start;
-            myLine.AddComponent<LineRenderer>();
-            LineRenderer lr = myLine.GetComponent<LineRenderer>();
-            lr.startWidth = 0.1f;
-            lr.endWidth = 0.1f;
-            //lr.gameObject.SetActive(false);
-            return lr;
-        }
-
-        void DrawLine2(LineRenderer lr, Vector3 start, Vector3 end)
-        {
-            if (!lr.gameObject.activeSelf)
-            {
-                lr.gameObject.SetActive(true);
-            }
-            lr.SetPosition(0, start);
-            lr.SetPosition(1, end);
         }
     }
 }
